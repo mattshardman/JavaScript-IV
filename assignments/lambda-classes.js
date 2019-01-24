@@ -40,12 +40,12 @@ class Student extends Person {
         this.favSubjects.map(each => console.log(each));
     }
 
-    PRAssignment(student, subject) {
-        console.log(`${student.name} has submitted a PR for ${subject}`);
+    PRAssignment(subject) {
+        console.log(`${this.name} has submitted a PR for ${subject}`);
     }
 
-    sprintChallenge() {
-        console.log(`${student.name} has begun sprint challenge on ${subject}`)
+    sprintChallenge(subject) {
+        console.log(`${this.name} has begun sprint challenge on ${subject}`)
     }
 }
 
@@ -78,10 +78,7 @@ const pauline = new Person({
     gender: 'F'
 });
 
-console.log(roger.speak());
-console.log(pauline.speak());
-
-// Person instances
+// Instructor instances
 const eric = new Instructor({
     name: 'Eric',
     location: 'Wolverhampton',
@@ -100,5 +97,36 @@ const sandra = new Instructor({
     catchPhrase: 'Hello everyone',
 });
 
+// Person instances
+const roy = new Student({
+    name: 'Roy',
+    location: 'London',
+    gender: 'M',
+    previousBackground: 'none',
+    className: 'cs1',
+    favSubjects: [''],
+});
+
+const rosie = new Student({
+    name: 'Rosie',
+    location: 'Maidenhead',
+    gender: 'F',
+    previousBackground: '3 month camp',
+    className: 'cs1',
+    favSubjects: ['js', 'go', 'erlang'],
+});
+
+//
+
+// person methods
+console.log(roger.speak());
+console.log(pauline.speak());
+
+// instructor methods
 console.log(eric.demo('fishing'));
-console.log(sandra.grade({ name: 'Roy'}, 'go'));
+console.log(sandra.grade(roy, 'go'));
+
+// student methods
+console.log(rosie.listSubjects());
+console.log(roy.PRAssignment('js classes'));
+console.log(rosie.sprintChallenge('es6'));
