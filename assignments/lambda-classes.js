@@ -7,7 +7,7 @@ class Person {
     }
 
     speak() {
-        return `Hello my name is ${this.name}, I am from ${this.location}`;
+        console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
     }
 }
 
@@ -20,10 +20,63 @@ class Instructor extends Person {
     }
 
     demo(subject) {
-        return `Today we are learning about ${subject}`;
+        console.log(`Today we are learning about ${subject}`);
     }
 
     grade(student, subject) {
-        return `${student.name} receives a perfect score on ${subject}`;
+        console.log(`${student.name} receives a perfect score on ${subject}`);
     }
 }
+
+class Student extends Person {
+    constructor(assignments) {
+        super(assignments);
+        this.previousBackground = assignments.previousBackground;
+        this.className = assignments.className;
+        this.favSubjects = assignments.favSubjects;
+    }
+
+    listSubjects() {
+        this.favSubjects.map(each => console.log(each));
+    }
+
+    PRAssignment(student, subject) {
+        console.log(`${student.name} has submitted a PR for ${subject}`);
+    }
+
+    sprintChallenge() {
+        console.log(`${student.name} has begun sprint challenge on ${subject}`)
+    }
+}
+
+class ProjectManager extends Instructor {
+    constructor(assignments) {
+        super(assignments);
+        this.gradClassName = assignments.gradClassName;
+        this.favInstructor = assignments.favInstructor;
+    }
+
+    standUp(channel) {
+        console.log(`${this.name} announces to ${channel}, @channel stand up time!`);
+    }
+
+    debugsCode(student, subject) {
+        console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
+    }
+}
+
+// Person instances
+const roger = new Person({
+    name: 'Roger',
+    location: 'Japan',
+    gender: 'M',
+});
+
+const pauline = new Person({
+    name: 'Pauline',
+    location: 'Westbury',
+    gender: 'F'
+});
+
+console.log(roger.speak());
+console.log(pauline.speak());
