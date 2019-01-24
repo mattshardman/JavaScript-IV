@@ -80,3 +80,25 @@ const pauline = new Person({
 
 console.log(roger.speak());
 console.log(pauline.speak());
+
+// Person instances
+const eric = new Instructor({
+    name: 'Eric',
+    location: 'Wolverhampton',
+    gender: 'M',
+    specialty: 'ice',
+    favLanguage: 'JS',
+    catchPhrase: 'Let\'s take it for a ride',
+});
+
+const sandra = new Instructor({
+    name: 'Sandra',
+    location: 'Canada',
+    gender: 'F',
+    specialty: 'polymath',
+    favLanguage: 'Python',
+    catchPhrase: 'Hello everyone',
+});
+
+console.log(eric.demo('fishing'));
+console.log(sandra.grade({ name: 'Roy'}, 'go'));
