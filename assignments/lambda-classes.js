@@ -139,19 +139,23 @@ const tily = new ProjectManager({
 });
 
 // person methods
+console.log('\n*****Person methods*****');
 roger.speak();
 pauline.speak();
 
-// instructor methods
+// Instructor methods
+console.log('\n*****Instructor methods*****');
 eric.demo('fishing');
 sandra.grade(roy, 'go');
 
 // student methods
+console.log('\n*****Student methods*****');
 rosie.listSubjects();
 roy.PRAssignment('js classes');
 rosie.sprintChallenge('es6');
 
 // PM methods
+console.log('\n*****PM methods*****');
 tily.demo('dogs n that');
 tom.standUp('eu1');
 tom.debugsCode(rosie, 'C++');
