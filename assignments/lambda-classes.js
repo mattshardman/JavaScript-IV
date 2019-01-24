@@ -1,39 +1,41 @@
 // CODE here for your Lambda Classes
 class Person {
-    constructor(assignments) {
-        this.name = assignments.name;
-        this.location = assignments.location;
-        this.gender = assignments.gender;
+    constructor({ name, location, gender }) {
+        this.name = name;
+        this.location = location;
+        this.gender = gender;
     }
 
     speak() {
-        console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
+        return console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
     }
 }
 
 class Instructor extends Person {
     constructor(assignments) {
         super(assignments);
-        this.specialty = assignments.specialty;
-        this.favLanguage = assignments.favLanguage;
-        this.catchPhrase = assignments.catchPhrase;
+        const { specialty, favLanguage, catchPhrase } = assignments;
+        this.specialty = specialty;
+        this.favLanguage = favLanguage;
+        this.catchPhrase = catchPhrase;
     }
 
     demo(subject) {
-        console.log(`Today we are learning about ${subject}`);
+        return console.log(`Today we are learning about ${subject}`);
     }
 
     grade(student, subject) {
-        console.log(`${student.name} receives a perfect score on ${subject}`);
+        return console.log(`${student.name} receives a perfect score on ${subject}`);
     }
 }
 
 class Student extends Person {
     constructor(assignments) {
         super(assignments);
-        this.previousBackground = assignments.previousBackground;
-        this.className = assignments.className;
-        this.favSubjects = assignments.favSubjects;
+        const { previousBackground, className, favSubjects } = assignments;
+        this.previousBackground = previousBackground;
+        this.className = className;
+        this.favSubjects = favSubjects;
     }
 
     listSubjects() {
@@ -41,27 +43,28 @@ class Student extends Person {
     }
 
     PRAssignment(subject) {
-        console.log(`${this.name} has submitted a PR for ${subject}`);
+        return console.log(`${this.name} has submitted a PR for ${subject}`);
     }
 
     sprintChallenge(subject) {
-        console.log(`${this.name} has begun sprint challenge on ${subject}`)
+        return console.log(`${this.name} has begun sprint challenge on ${subject}`)
     }
 }
 
 class ProjectManager extends Instructor {
     constructor(assignments) {
         super(assignments);
-        this.gradClassName = assignments.gradClassName;
-        this.favInstructor = assignments.favInstructor;
+        const { gradClassName, favInstructor } = assignments;
+        this.gradClassName = gradClassName;
+        this.favInstructor = favInstructor;
     }
 
     standUp(channel) {
-        console.log(`${this.name} announces to ${channel}, @channel stand up time!`);
+        return console.log(`${this.name} announces to ${channel}, @channel stand up time!`);
     }
 
     debugsCode(student, subject) {
-        console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
+        return console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
     }
 }
 
@@ -97,7 +100,7 @@ const sandra = new Instructor({
     catchPhrase: 'Hello everyone',
 });
 
-// Person instances
+// Student instances
 const roy = new Student({
     name: 'Roy',
     location: 'London',
@@ -116,17 +119,39 @@ const rosie = new Student({
     favSubjects: ['js', 'go', 'erlang'],
 });
 
-//
+// ProjectManger instances
+const tom = new ProjectManager({
+    name: 'Tom',
+    location: 'San Martin',
+    gender: 'M',
+    specialty: 'ice',
+    favLanguage: 'JS',
+    catchPhrase: 'Let\'s take it for a ride',
+});
+
+const tily = new ProjectManager({
+    name: 'Tily',
+    location: 'USA',
+    gender: 'F',
+    specialty: 'polymath',
+    favLanguage: 'Python',
+    catchPhrase: 'Hello everyone',
+});
 
 // person methods
-console.log(roger.speak());
-console.log(pauline.speak());
+roger.speak();
+pauline.speak();
 
 // instructor methods
-console.log(eric.demo('fishing'));
-console.log(sandra.grade(roy, 'go'));
+eric.demo('fishing');
+sandra.grade(roy, 'go');
 
 // student methods
-console.log(rosie.listSubjects());
-console.log(roy.PRAssignment('js classes'));
-console.log(rosie.sprintChallenge('es6'));
+rosie.listSubjects();
+roy.PRAssignment('js classes');
+rosie.sprintChallenge('es6');
+
+// PM methods
+tily.demo('dogs n that');
+tom.standUp('eu1');
+tom.debugsCode(rosie, 'C++');
